@@ -89,8 +89,6 @@ fun PlantillaCompose(isLandscape: Boolean) {
     // O de esta forma, pero hay que tener cuidado al recuperar el valor, que se hace esMarciano.value
     var esMarciano : MutableState<Boolean> = rememberSaveable { mutableStateOf(true) }
 
-    var sliderPosition by rememberSaveable { mutableIntStateOf(100) }
-
     val textBtn1 = "Btn1"
     val textBtn2 = "Btn2"
 
@@ -198,7 +196,7 @@ fun PlantillaCompose(isLandscape: Boolean) {
 @Composable
 fun Slider() {
     // Aquí se establece el valor inicial
-    var sliderPosition by remember { mutableFloatStateOf(50f) }
+    var sliderPosition by rememberSaveable { mutableFloatStateOf(50f) }
     Column {
         Slider(
             // El valor depende de la variable de la cual se guarda el estado
