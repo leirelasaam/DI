@@ -109,8 +109,10 @@ fun PlantillaCompose(isLandscape: Boolean) {
                 onClick = {
                     texto = textBtn1
                 },
+                // Cambiar colores del botón
                 colors = ButtonDefaults.buttonColors(Color.Yellow, Color.Black),
                 modifier = Modifier.width(200.dp),
+                // Cambiar forma del botón
                 shape = RoundedCornerShape(10.dp)
             ) {
                 Text(textBtn1)
@@ -141,6 +143,7 @@ fun PlantillaCompose(isLandscape: Boolean) {
                         .fillMaxWidth()
                         .background(Color.LightGray, RoundedCornerShape(20.dp))
                         .height(100.dp)
+                        // Hacer que sea clickable
                         .clickable {
                             esMarciano.value = !esMarciano.value
                         },
