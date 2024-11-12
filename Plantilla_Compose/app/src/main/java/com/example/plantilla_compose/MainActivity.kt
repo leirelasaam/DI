@@ -6,6 +6,7 @@ import android.provider.Settings.Global.getString
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.IntRange
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -23,10 +24,15 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Slider
+import androidx.compose.material3.SliderDefaults
+import androidx.compose.material3.SliderState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -82,6 +88,8 @@ fun PlantillaCompose(isLandscape: Boolean) {
     var texto by rememberSaveable { mutableStateOf(nombreApp) }
     // O de esta forma, pero hay que tener cuidado al recuperar el valor, que se hace esMarciano.value
     var esMarciano : MutableState<Boolean> = rememberSaveable { mutableStateOf(true) }
+
+    var sliderPosition by rememberSaveable { mutableIntStateOf(100) }
 
     val textBtn1 = "Btn1"
     val textBtn2 = "Btn2"
@@ -183,6 +191,30 @@ fun PlantillaCompose(isLandscape: Boolean) {
                 }
             }
         }
+        Slider()
+    }
+}
+
+@Composable
+fun Slider() {
+    // Aquí se establece el valor inicial
+    var sliderPosition by remember { mutableFloatStateOf(50f) }
+    Column {
+        Slider(
+            // El valor depende de la variable de la cual se guarda el estado
+            value = sliderPosition,
+            steps = 10,
+            onValueChange = { sliderPosition = it },
+            valueRange =  0f..100f,
+            colors = SliderDefaults.colors(
+                // Color del círculo
+                thumbColor = Color.Magenta,
+                // Color izq
+                activeTrackColor = Color.Green,
+                // Color der
+                inactiveTrackColor = Color.Red,
+            ),
+        )
     }
 }
 
