@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Plantilla_XML</string>
+    <string name="hola">¡Hola, Marciano!</string>
+    <string name="adios">¡Adiós, Marciano!</string>
+</resources>
